@@ -50,14 +50,14 @@ public class TestRunner {
         File featuresDir = new File("FirstTest/src/test/resources/Features");
         System.out.println("🧭 Feature files absolute path: " + featuresDir.getAbsolutePath());
         System.out.println("📁 Directory exists? " + featuresDir.exists());
-        System.out.println("📄 Files inside:");
         File[] files = featuresDir.listFiles();
-        if (files != null) {
-            for (File f : files) {
-                System.out.println(" - " + f.getName());
+        if (files != null && files.length > 0) {
+            System.out.println("📄 Found " + files.length + " file(s):");
+            for (File file : files) {
+                System.out.println(" - " + file.getName());
             }
         } else {
-            System.out.println(" - No files found or directory doesn't exist.");
+            System.out.println("🚫 No feature files found or directory doesn't exist.");
         }
     }
 }
