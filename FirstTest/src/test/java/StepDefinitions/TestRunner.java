@@ -47,18 +47,27 @@ import io.cucumber.junit.CucumberOptions;
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING) // This can help control method execution order (not necessary for feature files but useful for step methods)
 public class TestRunner {
 	static {
-        File featuresDir = new File("FirstTest/src/test/resources/Features");
-        System.out.println("🧭 Feature files absolute path: " + featuresDir.getAbsolutePath());
-        System.out.println("📁 Directory exists? " + featuresDir.exists());
-        File[] files = featuresDir.listFiles();
-        if (files != null && files.length > 0) {
-            System.out.println("📄 Found " + files.length + " file(s):");
-            for (File file : files) {
-                System.out.println(" - " + file.getName());
+        try {
+            File featuresDir = new File("FirstTest/src/test/resources/Features");
+            System.out.println("🧭 Feature files absolute path: " + featuresDir.getAbsolutePath());
+            System.out.println("📁 Directory exists? " + featuresDir.exists());
+            File[] files = featuresDir.listFiles();
+            if (files != null && files.length > 0) {
+                System.out.println("📄 Found " + files.length + " file(s):");
+                for (File file : files) {
+                    System.out.println(" - " + file.getName());
+                }
+            } else {
+                System.out.println("🚫 No feature files found or directory doesn't exist.");
             }
-        } else {
-            System.out.println("🚫 No feature files found or directory doesn't exist.");
+        } catch (Exception e) {
+            System.out.println("❌ Error printing feature files info: " + e.getMessage());
         }
+    }
+
+    @Test
+    public void triggerStaticBlock() {
+        // Dummy test to force loading of class and triggering static block
     }
 }
 
