@@ -46,5 +46,19 @@ import io.cucumber.junit.CucumberOptions;
 )
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING) // This can help control method execution order (not necessary for feature files but useful for step methods)
 public class TestRunner {
+	static {
+        File featuresDir = new File("FirstTest/src/test/resources/Features");
+        System.out.println("🧭 Feature files absolute path: " + featuresDir.getAbsolutePath());
+        System.out.println("📁 Directory exists? " + featuresDir.exists());
+        System.out.println("📄 Files inside:");
+        File[] files = featuresDir.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                System.out.println(" - " + f.getName());
+            }
+        } else {
+            System.out.println(" - No files found or directory doesn't exist.");
+        }
+    }
 }
 
